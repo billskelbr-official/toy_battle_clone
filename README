@@ -1,0 +1,7 @@
+Clone of the Toy Battle board game. 
+Code is partly based on the card game from the Youtube video series by Barry's Dev Hell (https://www.youtube.com/watch?v=2jMcuKdRh2w&list=PLNWIwxsLZ-LMYzxHlVb7v5Xo5KaUV7Tq1)
+
+Building:
+open the project in Godot 4.6.2. Install the WebRTC extension and the 'Tube' addon and create a TubeContext for the TubeClient node in the Main.tscn scene.
+
+My changes to Barry's code are licensed under CC0. Do whatever you want with it. Have fun :D

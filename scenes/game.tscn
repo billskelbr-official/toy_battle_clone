@@ -1,0 +1,326 @@
+[gd_scene format=3 uid="uid://gy03k5gc5lrk"]
+
+[ext_resource type="Script" uid="uid://q842xggl1vdq" path="res://scripts/game.gd" id="1_trtic"]
+[ext_resource type="Script" uid="uid://brm8slsl5j20f" path="res://scripts/card_manager.gd" id="1_u5sy4"]
+[ext_resource type="Texture2D" uid="uid://cscol5g2f7sti" path="res://assets/textures/misc/board.png" id="3_0tnpc"]
+[ext_resource type="Script" uid="uid://cpcwslab6u3jb" path="res://scripts/board.gd" id="3_5newe"]
+[ext_resource type="Script" uid="uid://mbjwu6x0c76m" path="res://scripts/card_slot_manager.gd" id="4_rysoc"]
+[ext_resource type="PackedScene" uid="uid://bhor3savc4y8q" path="res://scenes/card_slot.tscn" id="4_vtaks"]
+[ext_resource type="Script" uid="uid://71hyvyl4gpo5" path="res://scripts/area_manager.gd" id="5_ca42v"]
+[ext_resource type="Script" uid="uid://doh1b8jh3ja3b" path="res://scripts/player_hand.gd" id="5_kvpfn"]
+[ext_resource type="Script" uid="uid://dg3cojr53kxa8" path="res://scripts/deck.gd" id="5_vtaks"]
+[ext_resource type="PackedScene" uid="uid://dp3tymk8moqrr" path="res://scenes/area.tscn" id="6_ca42v"]
+[ext_resource type="Texture2D" uid="uid://dcsm3lyxp4gb8" path="res://assets/textures/card/back_1.png" id="6_kvpfn"]
+[ext_resource type="Texture2D" uid="uid://cofy3bk0325o6" path="res://assets/textures/cardslots/reserve.png" id="7_dinhu"]
+[ext_resource type="Script" uid="uid://d07mgktxip1yb" path="res://scripts/input_manager.gd" id="7_kvuet"]
+[ext_resource type="Script" uid="uid://caed7h31uae2l" path="res://scripts/battle_manager.gd" id="8_0tnpc"]
+[ext_resource type="Texture2D" uid="uid://onkxhmyk7jy5" path="res://assets/textures/card/back_2.png" id="8_kvpfn"]
+[ext_resource type="Script" uid="uid://dmm2eh04xf2ua" path="res://scripts/opponent_hand.gd" id="9_kvuet"]
+[ext_resource type="Script" uid="uid://dmeph4vltx46r" path="res://scripts/opponent_deck.gd" id="10_trtic"]
+[ext_resource type="PackedScene" uid="uid://ccoo4nrhxwftg" path="res://scenes/player_info.tscn" id="16_264po"]
+[ext_resource type="Script" uid="uid://nayybte6hj38" path="res://scripts/card_slot_viewer.gd" id="19_1kice"]
+[ext_resource type="PackedScene" uid="uid://bylj1vufgssto" path="res://scenes/msg_box.tscn" id="19_5newe"]
+[ext_resource type="Script" uid="uid://da8ikp7v08i0" path="res://scripts/loading_screen.gd" id="19_264po"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6rnap"]
+size = Vector2(240, 359.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1kice"]
+size = Vector2(1788, 808)
+
+[node name="Game" type="Node2D" unique_id=330277762]
+script = ExtResource("1_trtic")
+
+[node name="CardManager" type="Node2D" parent="." unique_id=1747306021]
+script = ExtResource("1_u5sy4")
+
+[node name="Board" type="Node2D" parent="." unique_id=2113138606]
+script = ExtResource("3_5newe")
+
+[node name="BoardBgImg" type="Sprite2D" parent="Board" unique_id=1900993382]
+z_index = -20
+texture = ExtResource("3_0tnpc")
+offset = Vector2(960, 540)
+
+[node name="CardSlotManager" type="Node2D" parent="Board" unique_id=1457567546]
+z_index = -19
+script = ExtResource("4_rysoc")
+
+[node name="CardSlotBHQ" parent="Board/CardSlotManager" unique_id=145342110 instance=ExtResource("4_vtaks")]
+position = Vector2(342, 540)
+rotation = 1.5707964
+hq = 1
+neighbour_paths = ["1", "2"]
+reflected_path = "RHQ"
+
+[node name="CardSlot1" parent="Board/CardSlotManager" unique_id=2057263011 instance=ExtResource("4_vtaks")]
+position = Vector2(342, 196)
+rotation = 1.5707964
+neighbour_paths = ["BHQ", "3", "5"]
+reflected_path = "11"
+
+[node name="CardSlot2" parent="Board/CardSlotManager" unique_id=65540301 instance=ExtResource("4_vtaks")]
+position = Vector2(342, 884)
+rotation = 1.5707964
+neighbour_paths = ["BHQ", "4", "6"]
+reflected_path = "12"
+
+[node name="CardSlot3" parent="Board/CardSlotManager" unique_id=1119677041 instance=ExtResource("4_vtaks")]
+position = Vector2(651, 425)
+rotation = 1.5707964
+neighbour_paths = ["1", "5", "BrN", "BrC"]
+reflected_path = "9"
+
+[node name="CardSlot4" parent="Board/CardSlotManager" unique_id=1241841959 instance=ExtResource("4_vtaks")]
+position = Vector2(651, 656)
+rotation = 1.5707964
+neighbour_paths = ["2", "6", "BrC", "BrS"]
+reflected_path = "10"
+
+[node name="CardSlot5" parent="Board/CardSlotManager" unique_id=1335587136 instance=ExtResource("4_vtaks")]
+position = Vector2(651, 196)
+rotation = 1.5707964
+neighbour_paths = ["3", "BrN"]
+reflected_path = "7"
+
+[node name="CardSlot6" parent="Board/CardSlotManager" unique_id=456617565 instance=ExtResource("4_vtaks")]
+position = Vector2(651, 884)
+rotation = 1.5707964
+neighbour_paths = ["4", "BrS"]
+reflected_path = "8"
+
+[node name="CardSlotBrC" parent="Board/CardSlotManager" unique_id=500137557 instance=ExtResource("4_vtaks")]
+position = Vector2(960, 540)
+rotation = 1.5707964
+neighbour_paths = ["3", "4", "9", "10"]
+reflected_path = "BrC"
+
+[node name="CardSlotBrN" parent="Board/CardSlotManager" unique_id=155503424 instance=ExtResource("4_vtaks")]
+position = Vector2(960, 196)
+rotation = 1.5707964
+neighbour_paths = ["3", "5", "7", "9"]
+reflected_path = "BrC"
+
+[node name="CardSlotBrS" parent="Board/CardSlotManager" unique_id=69565858 instance=ExtResource("4_vtaks")]
+position = Vector2(960, 884)
+rotation = 1.5707964
+neighbour_paths = ["4", "6", "8", "10"]
+reflected_path = "BrS"
+
+[node name="CardSlot7" parent="Board/CardSlotManager" unique_id=280262655 instance=ExtResource("4_vtaks")]
+position = Vector2(1269, 196)
+rotation = 1.5707964
+neighbour_paths = ["BrN", "9"]
+reflected_path = "5"
+
+[node name="CardSlot8" parent="Board/CardSlotManager" unique_id=878537072 instance=ExtResource("4_vtaks")]
+position = Vector2(1269, 884)
+rotation = 1.5707964
+neighbour_paths = ["BrS", "10"]
+reflected_path = "6"
+
+[node name="CardSlot9" parent="Board/CardSlotManager" unique_id=1611583269 instance=ExtResource("4_vtaks")]
+position = Vector2(1269, 425)
+rotation = 1.5707964
+neighbour_paths = ["BrN", "BrC", "7", "11"]
+reflected_path = "3"
+
+[node name="CardSlot10" parent="Board/CardSlotManager" unique_id=1848209520 instance=ExtResource("4_vtaks")]
+position = Vector2(1269, 656)
+rotation = 1.5707964
+neighbour_paths = ["BrC", "BrS", "8", "12"]
+reflected_path = "4"
+
+[node name="CardSlotRHQ" parent="Board/CardSlotManager" unique_id=2071400919 instance=ExtResource("4_vtaks")]
+position = Vector2(1578, 540)
+rotation = 1.5707964
+hq = 2
+neighbour_paths = ["11", "12"]
+reflected_path = "BHQ"
+
+[node name="CardSlot11" parent="Board/CardSlotManager" unique_id=1821800941 instance=ExtResource("4_vtaks")]
+position = Vector2(1578, 196)
+rotation = 1.5707964
+neighbour_paths = ["9", "RHQ"]
+reflected_path = "1"
+
+[node name="CardSlot12" parent="Board/CardSlotManager" unique_id=1929222198 instance=ExtResource("4_vtaks")]
+position = Vector2(1578, 884)
+rotation = 1.5707964
+neighbour_paths = ["10", "RHQ"]
+reflected_path = "2"
+
+[node name="AreaManager" type="Node2D" parent="Board" unique_id=254692094]
+script = ExtResource("5_ca42v")
+
+[node name="Area1" parent="Board/AreaManager" unique_id=687014251 instance=ExtResource("6_ca42v")]
+position = Vector2(512, 553)
+num_coins = 3
+border_names = ["BHQ", "1", "2", "3", "4", "BrC"]
+
+[node name="Area2" parent="Board/AreaManager" unique_id=301531333 instance=ExtResource("6_ca42v")]
+position = Vector2(726, 333)
+num_coins = 1
+border_names = ["3", "5", "BrN"]
+
+[node name="Area3" parent="Board/AreaManager" unique_id=1293717864 instance=ExtResource("6_ca42v")]
+position = Vector2(696, 798)
+num_coins = 1
+border_names = ["4", "6", "BrS"]
+
+[node name="Area4" parent="Board/AreaManager" unique_id=1136254345 instance=ExtResource("6_ca42v")]
+position = Vector2(956, 341)
+num_coins = 2
+border_names = ["3", "9", "BrN", "BrC"]
+
+[node name="Area5" parent="Board/AreaManager" unique_id=2098011547 instance=ExtResource("6_ca42v")]
+position = Vector2(944, 710)
+num_coins = 2
+border_names = ["4", "10", "BrC", "BrS"]
+
+[node name="Area6" parent="Board/AreaManager" unique_id=97985744 instance=ExtResource("6_ca42v")]
+position = Vector2(1182, 324)
+num_coins = 1
+border_names = ["7", "9", "BrN"]
+
+[node name="Area7" parent="Board/AreaManager" unique_id=1736843986 instance=ExtResource("6_ca42v")]
+position = Vector2(1216, 799)
+num_coins = 1
+border_names = ["8", "10", "BrS"]
+
+[node name="Area8" parent="Board/AreaManager" unique_id=311387369 instance=ExtResource("6_ca42v")]
+position = Vector2(1411, 531)
+num_coins = 3
+border_names = ["RHQ", "9", "10", "11", "12", "BrC"]
+
+[node name="PlayerHand" type="Node2D" parent="." unique_id=1835243360]
+scale = Vector2(0.8, 0.8)
+script = ExtResource("5_kvpfn")
+
+[node name="Discard1" parent="." unique_id=2071385524 instance=ExtResource("4_vtaks")]
+z_index = -19
+position = Vector2(126, 540)
+hq = -1
+
+[node name="Discard2" parent="." unique_id=832170604 instance=ExtResource("4_vtaks")]
+z_index = -19
+position = Vector2(1794, 540)
+hq = -2
+
+[node name="Deck" type="Node2D" parent="." unique_id=1250830429]
+z_index = -1
+position = Vector2(150, 950)
+scale = Vector2(0.7, 0.7)
+script = ExtResource("5_vtaks")
+
+[node name="DeckImage" type="Sprite2D" parent="Deck" unique_id=758822581]
+texture = ExtResource("6_kvpfn")
+
+[node name="DeckAreaImage" type="Sprite2D" parent="Deck" unique_id=900095649]
+z_index = -1
+texture = ExtResource("7_dinhu")
+
+[node name="Area2D" type="Area2D" parent="Deck" unique_id=1633462434]
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Deck/Area2D" unique_id=662496264]
+position = Vector2(0, -0.25)
+shape = SubResource("RectangleShape2D_6rnap")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Deck" unique_id=1296297200]
+modulate = Color(0.66245234, 0.66245234, 0.6624523, 1)
+offset_left = -104.0
+offset_top = -74.0
+offset_right = 103.0
+offset_bottom = 74.0
+mouse_filter = 2
+bbcode_enabled = true
+text = "99"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="InputManager" type="Node2D" parent="." unique_id=245075588]
+script = ExtResource("7_kvuet")
+
+[node name="Opponent" type="Node2D" parent="." unique_id=858372652]
+
+[node name="Hand" type="Node2D" parent="Opponent" unique_id=426422635]
+position = Vector2(1.5258789e-05, 0)
+scale = Vector2(0.79999995, 0.79999995)
+script = ExtResource("9_kvuet")
+
+[node name="Deck" type="Node2D" parent="Opponent" unique_id=126308529]
+z_index = -1
+position = Vector2(150, 130)
+scale = Vector2(0.7, 0.7)
+script = ExtResource("10_trtic")
+
+[node name="DeckImage" type="Sprite2D" parent="Opponent/Deck" unique_id=871077241]
+texture = ExtResource("8_kvpfn")
+
+[node name="DeckAreaImage" type="Sprite2D" parent="Opponent/Deck" unique_id=1192828369]
+z_index = -1
+texture = ExtResource("7_dinhu")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Opponent/Deck" unique_id=1951232716]
+modulate = Color(0.66245234, 0.66245234, 0.6624523, 1)
+offset_left = -104.0
+offset_top = -74.0
+offset_right = 103.0
+offset_bottom = 74.0
+bbcode_enabled = true
+text = "99"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CardManager" type="Node2D" parent="Opponent" unique_id=207682857]
+
+[node name="PlayerInfo" parent="Opponent" unique_id=66134775 instance=ExtResource("16_264po")]
+position = Vector2(1770, 160)
+default_blink = 1
+
+[node name="BattleManager" type="Node" parent="." unique_id=579713605]
+script = ExtResource("8_0tnpc")
+
+[node name="MsgBox" parent="." unique_id=1312390079 instance=ExtResource("19_5newe")]
+position = Vector2(0, -200)
+
+[node name="PlayerInfo" parent="." unique_id=1501394020 instance=ExtResource("16_264po")]
+position = Vector2(1770, 950)
+
+[node name="CardSlotViewer" type="Node2D" parent="." unique_id=1255214780]
+visible = false
+z_index = 20
+script = ExtResource("19_1kice")
+
+[node name="Polygon2D" type="Polygon2D" parent="CardSlotViewer" unique_id=1095964987]
+color = Color(0.2, 0.2, 0.2, 1)
+polygon = PackedVector2Array(66, 136, 1854, 136, 1854, 944, 66, 944)
+
+[node name="Area2D" type="Area2D" parent="CardSlotViewer" unique_id=2101475173]
+collision_layer = 16
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CardSlotViewer/Area2D" unique_id=64000832]
+position = Vector2(960, 540)
+shape = SubResource("RectangleShape2D_1kice")
+disabled = true
+
+[node name="LoadingScreen" type="Node2D" parent="." unique_id=255048575]
+z_index = 20
+script = ExtResource("19_264po")
+
+[node name="Polygon2D" type="Polygon2D" parent="LoadingScreen" unique_id=356531279]
+color = Color(0.2, 0.2, 0.2, 1)
+polygon = PackedVector2Array(0, 0, 1920, 0, 1920, 1080, 0, 1080)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="LoadingScreen" unique_id=470720104]
+offset_right = 1920.0
+offset_bottom = 1080.0
+bbcode_enabled = true
+text = "[font_size=128]Loading...[/font_size]"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="mouse_exited" from="CardSlotViewer/Area2D" to="CardSlotViewer" method="_on_area_2d_mouse_exited"]

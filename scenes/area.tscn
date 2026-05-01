@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://dp3tymk8moqrr"]
+
+[ext_resource type="Script" uid="uid://csahahp0jg1gm" path="res://scripts/area.gd" id="1_u55m2"]
+[ext_resource type="Texture2D" uid="uid://cyo386jksbu4m" path="res://assets/textures/misc/coin1.png" id="2_8qhwf"]
+
+[node name="Area" type="Node2D" unique_id=687014251]
+script = ExtResource("1_u55m2")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=466371928]
+z_index = -19
+texture = ExtResource("2_8qhwf")

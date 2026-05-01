@@ -1,0 +1,46 @@
+[gd_scene format=3 uid="uid://ccoo4nrhxwftg"]
+
+[ext_resource type="Texture2D" uid="uid://dn8revnbtrujc" path="res://assets/textures/misc/coin.png" id="1_qu03o"]
+[ext_resource type="Script" uid="uid://ck3on2p5j8vvr" path="res://scripts/player_info.gd" id="1_rqiw2"]
+[ext_resource type="Texture2D" uid="uid://h7gri6nokghq" path="res://assets/textures/avatars/1.png" id="2_rqiw2"]
+[ext_resource type="Texture2D" uid="uid://b7yipjhl7ra0q" path="res://assets/textures/avatars/highlight.png" id="3_g4hwl"]
+
+[node name="PlayerInfo" type="Node2D" unique_id=66134775]
+script = ExtResource("1_rqiw2")
+
+[node name="PlayerNameLabel" type="RichTextLabel" parent="." unique_id=1746418417]
+offset_left = -80.0
+offset_top = 54.0
+offset_right = 80.0
+offset_bottom = 122.0
+bbcode_enabled = true
+text = "[font_size=20]Player 1 Name[/font_size]"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CoinIconImg" type="Sprite2D" parent="." unique_id=851884000]
+position = Vector2(16, 39)
+texture = ExtResource("1_qu03o")
+
+[node name="CoinCountLabel" type="RichTextLabel" parent="." unique_id=2018239729]
+offset_left = 27.0
+offset_top = 14.0
+offset_right = 65.0
+offset_bottom = 54.0
+bbcode_enabled = true
+text = "[font_size=20]0[/font_size]"
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="AvatarImage" type="Sprite2D" parent="." unique_id=186072566]
+position = Vector2(0, -62)
+texture = ExtResource("2_rqiw2")
+
+[node name="AvatarHighlight" type="Sprite2D" parent="." unique_id=1059043782]
+visible = false
+position = Vector2(0, -62)
+texture = ExtResource("3_g4hwl")
+
+[node name="AvatarHighlightBlinkTimer" type="Timer" parent="." unique_id=1210997147]
+
+[connection signal="timeout" from="AvatarHighlightBlinkTimer" to="." method="_on_avatar_highlight_blink_timer_timeout"]

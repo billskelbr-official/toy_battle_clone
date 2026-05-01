@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://bylj1vufgssto"]
+
+[ext_resource type="Script" uid="uid://k2r0x7l1p7hh" path="res://scripts/msg_box.gd" id="1_3xy5q"]
+
+[node name="MsgBox" type="Node2D" unique_id=1312390079]
+z_index = 20
+script = ExtResource("1_3xy5q")
+
+[node name="Polygon2D" type="Polygon2D" parent="." unique_id=318584849]
+position = Vector2(0, 30)
+color = Color(0.2, 0.2, 0.2, 1)
+polygon = PackedVector2Array(66, 0, 1854, 0, 1854, 80, 66, 80)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=2019190265]
+offset_left = 66.0
+offset_top = 30.0
+offset_right = 1854.0
+offset_bottom = 110.0
+bbcode_enabled = true
+text = "[font_size=48]Placeholder Text[/font_size]"
+horizontal_alignment = 1
+vertical_alignment = 1
+justification_flags = 35
+
+[node name="Timer" type="Timer" parent="." unique_id=1973731812]
+wait_time = 2.0
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -1,0 +1,234 @@
+[gd_scene format=3 uid="uid://5y08rhhek43p"]
+
+[ext_resource type="Script" uid="uid://c0lm03orhwyid" path="res://scripts/opponent_card.gd" id="1_snj32"]
+[ext_resource type="Texture2D" uid="uid://cydx07redem3l" path="res://assets/textures/card/base_2.png" id="2_80w62"]
+[ext_resource type="Texture2D" uid="uid://onkxhmyk7jy5" path="res://assets/textures/card/back_2.png" id="3_snj32"]
+
+[sub_resource type="Animation" id="Animation_ktuci"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CardFront/PowerLabel:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.13333334, 0.13333334, 0.13333334, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CardFront/NameLabel:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CardFront/AbilityLabel:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.13333334, 0.13333334, 0.13333334, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CardImageBack:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CardFront/CardImageBase:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("CardFront/CardImageUnit:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("CardImageBack:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_6u4wf"]
+resource_name = "cardflip"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CardFront/PowerLabel:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(0.13333334, 0.13333334, 0.13333334, 0), Color(0.13333334, 0.13333334, 0.13333334, 0), Color(0.13333334, 0.13333334, 0.13333334, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CardFront/NameLabel:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CardFront/AbilityLabel:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(0.13333334, 0.13333334, 0.13333334, 0), Color(0.13333334, 0.13333334, 0.13333334, 0), Color(0.13333334, 0.13333334, 0.13333334, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CardImageBack:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.1, 1), Vector2(1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CardFront/CardImageBase:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.1, 1), Vector2(1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("CardFront/CardImageUnit:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.1, 1), Vector2(1, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("CardImageBack:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0.0009999999, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ktuci"]
+_data = {
+&"RESET": SubResource("Animation_ktuci"),
+&"cardflip": SubResource("Animation_6u4wf")
+}
+
+[node name="Card" type="Node2D" unique_id=1221396722]
+script = ExtResource("1_snj32")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=121974408]
+libraries/ = SubResource("AnimationLibrary_ktuci")
+
+[node name="CardFront" type="Node2D" parent="." unique_id=43831776]
+
+[node name="CardImageBase" type="Sprite2D" parent="CardFront" unique_id=1765214722]
+texture = ExtResource("2_80w62")
+
+[node name="CardImageUnit" type="Sprite2D" parent="CardFront" unique_id=144290491]
+
+[node name="PowerLabel" type="RichTextLabel" parent="CardFront" unique_id=2116111887]
+modulate = Color(0.13333334, 0.13333334, 0.13333334, 0)
+offset_left = -105.0
+offset_top = -166.0
+offset_right = -59.0
+offset_bottom = -121.0
+bbcode_enabled = true
+text = "[font_size=30]99[/font_size]"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="NameLabel" type="RichTextLabel" parent="CardFront" unique_id=1406082761]
+modulate = Color(1, 1, 1, 0)
+offset_left = -53.0
+offset_top = -166.0
+offset_right = 106.0
+offset_bottom = -122.0
+bbcode_enabled = true
+text = "[font_size=24]Card Name[/font_size]"
+vertical_alignment = 1
+
+[node name="AbilityLabel" type="RichTextLabel" parent="CardFront" unique_id=411112577]
+modulate = Color(0.13333334, 0.13333334, 0.13333334, 0)
+offset_left = -101.0
+offset_top = 71.0
+offset_right = 100.0
+offset_bottom = 161.0
+bbcode_enabled = true
+text = "[font_size=12]Ability description text[/font_size]"
+horizontal_alignment = 3
+justification_flags = 35
+
+[node name="CardImageBack" type="Sprite2D" parent="." unique_id=655591334]
+texture = ExtResource("3_snj32")
