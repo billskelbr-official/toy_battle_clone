@@ -52,9 +52,9 @@ func restore_client_gamestate():
 		"bases": [],
 		"areas": []
 	}
-	for c in $"../Discard1":
+	for c in $"../Discard1".cards:
 		board_data["discard"][0].append(0, c.id)
-	for c in $"../Discard2":
+	for c in $"../Discard2".cards:
 		board_data["discard"][1].append(c.id)
 	if (ref_battlemgr.whoami == 1):
 		board_data["money"] = [ref_battlemgr.mymoney, ref_battlemgr.oppmoney]
@@ -65,6 +65,6 @@ func restore_client_gamestate():
 		for c in b.cards:
 			cds.insert(0, [c.team, c.id])
 		board_data["bases"].append(cds.duplicate())
-	for a in $Board/AreaManager:
+	for a in $"Board/AreaManager".get_children():
 		board_data["areas"].insert(0, a.available)
 	$Board.rpc("set_client_board", board_data)
