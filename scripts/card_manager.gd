@@ -31,7 +31,6 @@ func connect_card_signals(card):
 	card.connect("hoveroff", on_card_hoveroff)
 
 func on_card_hoveron(card):
-	print("Hoveron: "+str(card)+" | "+str(card.id)+" | "+str(card.team))
 	if (hover_flag):
 		return
 	hover_flag = 1

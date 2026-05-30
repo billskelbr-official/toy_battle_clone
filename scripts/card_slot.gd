@@ -93,6 +93,7 @@ func add_card(card):
 	# make sure the newest card shows on top
 	if (cards.size() > 0):
 		cards[0].visible = 0
+	card.get_node("Area2D/CollisionShape2D").disabled = 1
 	card.z_index = -18
 	card.rotation = rotation
 	card.position = position

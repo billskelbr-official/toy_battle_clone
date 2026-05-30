@@ -53,6 +53,15 @@ offset_right = 1488.0
 offset_bottom = 377.0
 placeholder_text = "Session ID..."
 
+[node name="VersionLabel" type="RichTextLabel" parent="MainMenu" unique_id=534165778]
+offset_left = 1753.0
+offset_top = 1019.0
+offset_right = 1887.0
+offset_bottom = 1064.0
+text = "beta-1.0-2"
+horizontal_alignment = 2
+vertical_alignment = 2
+
 [node name="TubeClient" type="Node" parent="." unique_id=808233088]
 script = ExtResource("3_jyhfs")
 context = ExtResource("4_tbgi4")

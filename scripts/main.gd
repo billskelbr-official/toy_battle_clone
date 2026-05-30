@@ -4,6 +4,7 @@ extends Node2D
 
 var ref_tube
 var myname
+var hosting = 0
 
 func _ready() -> void:
 	get_tree().set_auto_accept_quit(false)
@@ -15,14 +16,26 @@ func _notification(what):
 		get_tree().quit()
 
 func _on_host_button_pressed() -> void:
-	disable_buttons()
-	set_myname()
-	ref_tube.create_session()
-	$"MainMenu/HostIDLabel".text = "Session ID: [" + ref_tube.session_id + "]"
-	multiplayer.peer_connected.connect(_on_peer_connected)
+	hosting = !hosting
+	if (hosting):
+		disable_all_buttons()
+		$"MainMenu/HostButton".disabled = 0
+		$"MainMenu/HostButton".text = "Cancel"
+		set_myname()
+		ref_tube.create_session()
+		$"MainMenu/HostIDLabel".text = "Session ID: [" + ref_tube.session_id + "]"
+		multiplayer.peer_connected.connect(_on_peer_connected)
+	else:
+		# already hosting a game, so cancel
+		multiplayer.peer_connected.disconnect(_on_peer_connected)
+		ref_tube.leave_session()
+		$"MainMenu/HostButton".text = "Host Game"
+		$"MainMenu/HostIDLabel".text = "Session ID: [------]"
+		return_to_mainmenu()
 	
 func _on_join_button_pressed() -> void:
-	disable_buttons()
+	$"MainMenu/JoinIDInput".text = $"MainMenu/JoinIDInput".text.to_upper()
+	disable_all_buttons()
 	set_myname()
 	hide_mainmenu()
 	var g = game_scene.instantiate()
@@ -41,7 +54,7 @@ func _on_peer_connected(_peerid):
 	else:
 		$Game.rpc("setup_client")
 
-func disable_buttons():
+func disable_all_buttons():
 	$MainMenu/HostButton.disabled = 1
 	$MainMenu/JoinButton.disabled = 1
 
@@ -71,5 +84,5 @@ func return_to_mainmenu():
 
 func set_myname():
 	myname = $MainMenu/NameInput.text
-	if (myname == "Session ID: [------]"):
+	if (myname == ""):
 		myname = "Player"
