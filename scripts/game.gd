@@ -68,3 +68,6 @@ func restore_client_gamestate():
 	for a in $"Board/AreaManager".get_children():
 		board_data["areas"].insert(0, a.available)
 	$Board.rpc("set_client_board", board_data)
+
+func _on_leave_button_pressed() -> void:
+	$"..".ref_tube.leave_session()

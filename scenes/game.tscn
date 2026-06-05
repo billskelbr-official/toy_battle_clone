@@ -323,4 +323,14 @@ text = "[font_size=128]Loading...[/font_size]"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="LeaveButton" type="Button" parent="." unique_id=883237105]
+visible = false
+offset_left = 40.0
+offset_top = 40.0
+offset_right = 237.0
+offset_bottom = 93.0
+theme_override_font_sizes/font_size = 32
+text = "End game"
+
 [connection signal="mouse_exited" from="CardSlotViewer/Area2D" to="CardSlotViewer" method="_on_area_2d_mouse_exited"]
+[connection signal="pressed" from="LeaveButton" to="." method="_on_leave_button_pressed"]

@@ -11,56 +11,170 @@
 script = ExtResource("1_o5qli")
 game_scene = ExtResource("2_0wfyh")
 
-[node name="MainMenu" type="Node2D" parent="." unique_id=644971458]
+[node name="MainMenu" type="Node2D" parent="." unique_id=396015961]
 
-[node name="MainMenuBGImage" type="Sprite2D" parent="MainMenu" unique_id=1938915778]
+[node name="MainMenuBG" type="Node2D" parent="MainMenu" unique_id=1036559256]
+
+[node name="MainMenuBGImage" type="Sprite2D" parent="MainMenu/MainMenuBG" unique_id=1938915778]
 texture = ExtResource("3_tefeu")
 offset = Vector2(960, 540)
 
-[node name="NameInput" type="LineEdit" parent="MainMenu" unique_id=92519763]
-offset_left = 1272.0
-offset_top = 229.0
-offset_right = 1590.0
-offset_bottom = 269.0
-placeholder_text = "Name..."
-
-[node name="HostButton" type="Button" parent="MainMenu" unique_id=1890700324]
-offset_left = 1274.0
-offset_top = 287.0
-offset_right = 1368.0
-offset_bottom = 318.0
-text = "Host Game"
-
-[node name="HostIDLabel" type="RichTextLabel" parent="MainMenu" unique_id=1961064294]
-offset_left = 1379.0
-offset_top = 288.0
-offset_right = 1586.0
-offset_bottom = 324.0
-text = "Session ID: [------]"
-horizontal_alignment = 2
-
-[node name="JoinButton" type="Button" parent="MainMenu" unique_id=1482814236]
-offset_left = 1499.0
-offset_top = 341.0
-offset_right = 1586.0
-offset_bottom = 372.0
-text = "Join Game"
-
-[node name="JoinIDInput" type="LineEdit" parent="MainMenu" unique_id=548849595]
-offset_left = 1273.0
-offset_top = 336.0
-offset_right = 1488.0
-offset_bottom = 377.0
-placeholder_text = "Session ID..."
-
-[node name="VersionLabel" type="RichTextLabel" parent="MainMenu" unique_id=534165778]
+[node name="VersionLabel" type="RichTextLabel" parent="MainMenu/MainMenuBG" unique_id=534165778]
 offset_left = 1753.0
 offset_top = 1019.0
 offset_right = 1887.0
 offset_bottom = 1064.0
-text = "beta-1.0-2"
+text = "beta-1.0-3"
 horizontal_alignment = 2
 vertical_alignment = 2
+
+[node name="RootMenu" type="Node2D" parent="MainMenu" unique_id=644971458]
+
+[node name="MainMenuButtons" type="VBoxContainer" parent="MainMenu/RootMenu" unique_id=280277647]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 828.0
+offset_top = 725.0
+offset_right = 1093.0
+offset_bottom = 892.0
+grow_horizontal = 2
+grow_vertical = 0
+alignment = 1
+
+[node name="JoinMenuButton" type="Button" parent="MainMenu/RootMenu/MainMenuButtons" unique_id=1482814236]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "Join Game"
+
+[node name="HostMenuButton" type="Button" parent="MainMenu/RootMenu/MainMenuButtons" unique_id=1890700324]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "Host Game"
+
+[node name="SpectateButton" type="Button" parent="MainMenu/RootMenu/MainMenuButtons" unique_id=1080050133]
+visible = false
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "Spectate Game"
+
+[node name="SettingsButton" type="Button" parent="MainMenu/RootMenu/MainMenuButtons" unique_id=707534934]
+visible = false
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "Settings"
+
+[node name="DimPolygon" type="Polygon2D" parent="MainMenu" unique_id=1889235300]
+visible = false
+color = Color(0, 0, 0, 0.5019608)
+polygon = PackedVector2Array(0, 0, 0, 1080, 1920, 1080, 1920, 0)
+
+[node name="HostMenu" type="Node2D" parent="MainMenu" unique_id=1494808646]
+visible = false
+position = Vector2(-2, 0)
+
+[node name="HostMenuLabel" type="Label" parent="MainMenu/HostMenu" unique_id=639891104]
+offset_left = 40.0
+offset_top = 40.0
+offset_right = 640.0
+offset_bottom = 100.0
+theme_override_font_sizes/font_size = 32
+text = "Host game..."
+metadata/_edit_use_anchors_ = true
+
+[node name="HostMenuButtons" type="VBoxContainer" parent="MainMenu/HostMenu" unique_id=26295538]
+offset_left = 791.0
+offset_top = 378.0
+offset_right = 1129.0
+offset_bottom = 602.0
+alignment = 1
+
+[node name="NameInput" type="LineEdit" parent="MainMenu/HostMenu/HostMenuButtons" unique_id=92519763]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+placeholder_text = "Name..."
+metadata/_edit_use_anchors_ = true
+
+[node name="MapSelect" type="MenuButton" parent="MainMenu/HostMenu/HostMenuButtons" unique_id=1245567020]
+visible = false
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Map"
+expand_icon = true
+
+[node name="AllowSpectatorsCheckBox" type="CheckBox" parent="MainMenu/HostMenu/HostMenuButtons" unique_id=1510023582]
+visible = false
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Allow Spectators"
+
+[node name="HostButton" type="Button" parent="MainMenu/HostMenu/HostMenuButtons" unique_id=1239973092]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Host Game"
+
+[node name="MainMenuButton" type="Button" parent="MainMenu/HostMenu/HostMenuButtons" unique_id=1345420522]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Return to Main Menu"
+
+[node name="HostIDLabel" type="RichTextLabel" parent="MainMenu/HostMenu" unique_id=1961064294]
+offset_left = 662.0
+offset_top = 580.0
+offset_right = 1262.0
+offset_bottom = 680.0
+theme_override_font_sizes/normal_font_size = 48
+theme_override_font_sizes/bold_font_size = 48
+theme_override_font_sizes/bold_italics_font_size = 48
+theme_override_font_sizes/italics_font_size = 48
+theme_override_font_sizes/mono_font_size = 48
+text = "Session ID: [------]"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="JoinMenu" type="Node2D" parent="MainMenu" unique_id=1782533062]
+visible = false
+position = Vector2(-2, 0)
+
+[node name="JoinMenuLabel" type="Label" parent="MainMenu/JoinMenu" unique_id=176835709]
+offset_left = 40.0
+offset_top = 40.0
+offset_right = 640.0
+offset_bottom = 100.0
+theme_override_font_sizes/font_size = 32
+text = "Join game..."
+metadata/_edit_use_anchors_ = true
+
+[node name="JoinMenuButtons" type="VBoxContainer" parent="MainMenu/JoinMenu" unique_id=1356030194]
+offset_left = 810.0
+offset_top = 450.0
+offset_right = 1148.0
+offset_bottom = 674.0
+alignment = 1
+
+[node name="NameInput" type="LineEdit" parent="MainMenu/JoinMenu/JoinMenuButtons" unique_id=1180652110]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+placeholder_text = "Name..."
+metadata/_edit_use_anchors_ = true
+
+[node name="JoinIDInput" type="LineEdit" parent="MainMenu/JoinMenu/JoinMenuButtons" unique_id=548849595]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+placeholder_text = "Session ID..."
+
+[node name="JoinButton" type="Button" parent="MainMenu/JoinMenu/JoinMenuButtons" unique_id=1986101688]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Join Game"
+
+[node name="MainMenuButton" type="Button" parent="MainMenu/JoinMenu/JoinMenuButtons" unique_id=1409380097]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Return to Main Menu"
 
 [node name="TubeClient" type="Node" parent="." unique_id=808233088]
 script = ExtResource("3_jyhfs")
@@ -70,7 +184,11 @@ metadata/_custom_type_script = "uid://cy006uvidc4y"
 [node name="MsgBox" parent="." unique_id=1312390079 instance=ExtResource("5_tbgi4")]
 position = Vector2(0, -200)
 
-[connection signal="pressed" from="MainMenu/HostButton" to="." method="_on_host_button_pressed"]
-[connection signal="pressed" from="MainMenu/JoinButton" to="." method="_on_join_button_pressed"]
+[connection signal="pressed" from="MainMenu/RootMenu/MainMenuButtons/JoinMenuButton" to="." method="_on_join_menu_button_pressed"]
+[connection signal="pressed" from="MainMenu/RootMenu/MainMenuButtons/HostMenuButton" to="." method="_on_host_menu_button_pressed"]
+[connection signal="pressed" from="MainMenu/HostMenu/HostMenuButtons/HostButton" to="." method="_on_host_button_pressed"]
+[connection signal="pressed" from="MainMenu/HostMenu/HostMenuButtons/MainMenuButton" to="." method="_on_main_menu_button_pressed"]
+[connection signal="pressed" from="MainMenu/JoinMenu/JoinMenuButtons/JoinButton" to="." method="_on_join_button_pressed"]
+[connection signal="pressed" from="MainMenu/JoinMenu/JoinMenuButtons/MainMenuButton" to="." method="_on_main_menu_button_pressed"]
 [connection signal="error_raised" from="TubeClient" to="." method="_on_tube_client_error_raised"]
 [connection signal="session_left" from="TubeClient" to="." method="_on_tube_client_session_left"]

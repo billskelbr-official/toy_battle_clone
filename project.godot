@@ -13,7 +13,7 @@ config_version=5
 config/name="Toy Battle Clone"
 run/main_scene="uid://c3rdokaglfmga"
 config/features=PackedStringArray("4.6", "GL Compatibility")
-config/icon="res://icon.svg"
+config/icon="uid://clvvogs6ns5lv"
 
 [display]
 

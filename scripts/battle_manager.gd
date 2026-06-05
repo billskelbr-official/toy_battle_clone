@@ -71,12 +71,18 @@ func win():
 	game_end = 1
 	end_turn_internal()
 	$"../MsgBox".show_msg("You win!")
+	$"../LeaveButton".visible = 1
+	if (multiplayer.get_unique_id() != 1):
+		$"../LeaveButton".disabled = 1
 
 @rpc("any_peer")
 func lose():
 	game_end = 1
 	end_turn_internal()
 	$"../MsgBox".show_msg("You lose!")
+	$"../LeaveButton".visible = 1
+	if (multiplayer.get_unique_id() != 1):
+		$"../LeaveButton".disabled = 1
 
 @rpc("any_peer")
 func set_oppname(name_):
