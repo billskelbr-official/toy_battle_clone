@@ -16,7 +16,7 @@ func init(team_, id_):
 	get_node("CardFront/CardImageUnit").texture = load(imgpath)
 	get_node("CardImageBack").texture = load("res://assets/textures/card/back_"+str(3-team)+".png")
 	get_node("CardFront/CardImageBase").texture = load("res://assets/textures/card/base_"+str(3-team)+".png")
-	get_node("CardFront/PowerLabel").text = "[font_size=30]" + str(drawn[0]) + "[/font_size]"
-	get_node("CardFront/NameLabel").text = "[font_size=24]" + str(drawn[1]) + "[/font_size]"
-	get_node("CardFront/AbilityLabel").text = "[font_size=12]" + str(drawn[2]) + "[/font_size]"
+	get_node("CardFront/PowerLabel").text = str(drawn[0])
+	get_node("CardFront/NameLabel").text = str(drawn[1])
+	get_node("CardFront/AbilityLabel").text = str(drawn[2])
 	return self

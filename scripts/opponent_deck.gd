@@ -22,7 +22,7 @@ func draw_card():
 	
 	var drawn = deck[0]
 	deck.erase(drawn)
-	$"RichTextLabel".text = "[font_size=48]"+str(deck.size())+"[/font_size]"
+	$"RichTextLabel".text = str(deck.size())
 	if (deck.size() == 0):
 		$DeckImage.visible = 0
 		$RichTextLabel.visible = 0

@@ -24,6 +24,7 @@ func end_turn():
 	
 func end_turn_internal():
 	$"../PlayerInfo".stop_blinking()
+	$"../Opponent/PlayerInfo".stop_blinking()
 	ref_deck.deck_disabled = 1
 	ref_board.get_node("CardSlotManager").slots_disabled = 1
 	myturn = 0
@@ -39,10 +40,10 @@ func capture_money(player, amt):
 func update_money(player, amt):
 	if (player == whoami):
 		mymoney += amt
-		$"../PlayerInfo/CoinCountLabel".text = "[font_size=20]" + str(mymoney) + "[/font_size]"
+		$"../PlayerInfo/CoinCountLabel".text = str(mymoney)
 	else:
 		oppmoney += amt
-		$"../Opponent/PlayerInfo/CoinCountLabel".text = "[font_size=20]" + str(oppmoney) + "[/font_size]"
+		$"../Opponent/PlayerInfo/CoinCountLabel".text = str(oppmoney)
 
 @rpc("any_peer")
 func start_turn():
@@ -68,27 +69,42 @@ func set_whoami(identity):
 
 @rpc("any_peer")
 func win():
-	game_end = 1
-	end_turn_internal()
+	game_end_cleanup()
 	$"../MsgBox".show_msg("You win!")
-	$"../LeaveButton".visible = 1
-	if (multiplayer.get_unique_id() != 1):
-		$"../LeaveButton".disabled = 1
+	$"../PlayerInfo".set_hat("hat_win")
+	$"../Opponent/PlayerInfo".set_hat("hat_lose")
 
 @rpc("any_peer")
 func lose():
-	game_end = 1
-	end_turn_internal()
+	game_end_cleanup()
 	$"../MsgBox".show_msg("You lose!")
-	$"../LeaveButton".visible = 1
-	if (multiplayer.get_unique_id() != 1):
-		$"../LeaveButton".disabled = 1
+	$"../PlayerInfo".set_hat("hat_lose")
+	$"../Opponent/PlayerInfo".set_hat("hat_win")
+
+@rpc("any_peer")
+func opp_surrender():
+	win()
+	# give opp a flag
+	$"../Opponent/PlayerInfo".set_hat("hat_surrender")	
+
+func surrender():
+	lose()
+	# show a flag
+	$"../PlayerInfo".set_hat("hat_surrender")
+	rpc("opp_surrender")
 
 @rpc("any_peer")
 func set_oppname(name_):
 	oppname = name_
-	$"../Opponent/PlayerInfo/PlayerNameLabel".text = "[font_size=20]"+name_+"[/font_size]"
+	$"../Opponent/PlayerInfo/PlayerNameLabel".text = name_
+
+func game_end_cleanup():
+	game_end = 1
+	end_turn_internal()
+	$"../Buttons/SurrenderButton".disabled = 1
+	if (multiplayer.get_unique_id() == 1):
+		$"../Buttons/LeaveButton".disabled = 0
 
 func set_myname(name_):
 	myname = name_
-	$"../PlayerInfo/PlayerNameLabel".text = "[font_size=20]" + name_ + "[/font_size]"
+	$"../PlayerInfo/PlayerNameLabel".text = name_

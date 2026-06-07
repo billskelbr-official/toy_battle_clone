@@ -34,13 +34,12 @@ func _on_host_button_pressed():
 		multiplayer.peer_disconnected.connect(_on_peer_disconnected)
 	else:
 		# already hosting a game, so cancel
+		reset_host_menu()
 		mainmenu_on_disconnect = 0
 		multiplayer.peer_connected.disconnect(_on_peer_connected)
 		multiplayer.peer_disconnected.disconnect(_on_peer_disconnected)
 		ref_tube.leave_session()
-		$"MainMenu/HostMenu/HostMenuButtons/HostButton".text = "Host Game"
-		$"MainMenu/HostMenu/HostIDLabel".text = "Session ID: [------]"
-		$"MainMenu/HostMenu/HostMenuButtons/MainMenuButton".disabled = 0
+		reset_host_menu()
 
 func _on_join_menu_button_pressed():
 	$"MainMenu/RootMenu".visible = 0
@@ -63,6 +62,9 @@ func _on_main_menu_button_pressed():
 	$"MainMenu/RootMenu".visible = 1
 
 func _on_peer_connected(_peerid):
+	# reset the host menu
+	reset_host_menu()
+	
 	ref_tube.refuse_new_connections = 1
 	hide_mainmenu()
 	var g = game_scene.instantiate()
@@ -116,3 +118,13 @@ func set_myname(val):
 	myname = val
 	if (myname == ""):
 		myname = "Player"
+	else:
+		# use the same name when joining or hosting again
+		$"MainMenu/HostMenu/HostMenuButtons/NameInput".text = val
+		$"MainMenu/JoinMenu/JoinMenuButtons/NameInput".text = val
+
+func reset_host_menu():
+		hosting = 0
+		$"MainMenu/HostMenu/HostMenuButtons/HostButton".text = "Host Game"
+		$"MainMenu/HostMenu/HostIDLabel".text = "Session ID: [------]"
+		$"MainMenu/HostMenu/HostMenuButtons/MainMenuButton".disabled = 0

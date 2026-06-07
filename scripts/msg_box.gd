@@ -12,7 +12,7 @@ func show_msg(msg):
 	if (inuse):
 		hide_msg()
 	inuse = 1
-	$RichTextLabel.text = "[font_size=36]" + msg + "[/font_size]"
+	$RichTextLabel.text = msg
 	position = frompos
 	var tween = get_tree().create_tween()
 	tween.tween_property(self, "position", topos, 0.1)

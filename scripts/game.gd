@@ -71,3 +71,7 @@ func restore_client_gamestate():
 
 func _on_leave_button_pressed() -> void:
 	$"..".ref_tube.leave_session()
+
+func _on_surrender_button_pressed() -> void:
+	$BattleManager.surrender()
+	pass # Replace with function body.

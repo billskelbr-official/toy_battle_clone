@@ -214,8 +214,13 @@ offset_top = -166.0
 offset_right = -59.0
 offset_bottom = -121.0
 mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 30
+theme_override_font_sizes/bold_font_size = 30
+theme_override_font_sizes/bold_italics_font_size = 30
+theme_override_font_sizes/italics_font_size = 30
+theme_override_font_sizes/mono_font_size = 30
 bbcode_enabled = true
-text = "[font_size=30]99[/font_size]"
+text = "99"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -226,8 +231,13 @@ offset_top = -166.0
 offset_right = 106.0
 offset_bottom = -122.0
 mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 24
+theme_override_font_sizes/bold_font_size = 24
+theme_override_font_sizes/bold_italics_font_size = 24
+theme_override_font_sizes/italics_font_size = 24
+theme_override_font_sizes/mono_font_size = 24
 bbcode_enabled = true
-text = "[font_size=24]Card Name[/font_size]"
+text = "Card Name"
 vertical_alignment = 1
 
 [node name="AbilityLabel" type="RichTextLabel" parent="CardFront" unique_id=411112577]
@@ -237,8 +247,13 @@ offset_top = 71.0
 offset_right = 100.0
 offset_bottom = 161.0
 mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 14
+theme_override_font_sizes/bold_font_size = 14
+theme_override_font_sizes/bold_italics_font_size = 14
+theme_override_font_sizes/italics_font_size = 14
+theme_override_font_sizes/mono_font_size = 14
 bbcode_enabled = true
-text = "[font_size=12]Ability description text[/font_size]"
+text = "Ability description text"
 horizontal_alignment = 3
 justification_flags = 35
 
