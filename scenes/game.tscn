@@ -318,7 +318,6 @@ shape = SubResource("RectangleShape2D_1kice")
 disabled = true
 
 [node name="LoadingScreen" type="Node2D" parent="." unique_id=255048575]
-visible = false
 z_index = 20
 script = ExtResource("19_264po")
 
