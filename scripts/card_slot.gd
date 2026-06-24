@@ -9,9 +9,7 @@ const CARDSLOT_PREFIX = "../CardSlot"
 # hq = -1: blue discard pile
 # hq = -2: red discard pile
 @export var neighbour_paths: Array
-@export var reflected_path: String
 
-var ref_carddb
 var ref_battlemgr
 var ref_msgbox
 var ref_deck
@@ -20,10 +18,11 @@ var team
 var id
 var neighbours
 
-func _ready() -> void:
+# MUST be called for all non-discard cardslots (replaced _ready() function to allow setting exported
+# vars in code). call this for ALL slots after ALL slots have been added to the board.
+func cardslot_init() -> void:
 	# these references are only needed by real cardslots (i.e. not the discard pile)
 	if (hq >= 0):
-		ref_carddb = load("res://scripts/card_db.gd")
 		ref_battlemgr = $"../../../BattleManager"
 		ref_msgbox = $"../../../MsgBox"
 		ref_deck = $"../../../Deck"
@@ -58,7 +57,7 @@ func can_add_card(card) -> int:
 		ref_msgbox.show_msg("Cannot play card on own HQ")
 		return 0
 	
-	if (card.id != ref_carddb.CARDID_MONKEY):
+	if (card.id != GAME_DB.CARDID_MONKEY):
 		var hq_connected = 0
 		todo = [self]
 		while (todo.size()):
@@ -80,7 +79,7 @@ func can_add_card(card) -> int:
 			return 0
 
 	if (
-		card.id != ref_carddb.CARDID_DUCK 
+		card.id != GAME_DB.CARDID_DUCK 
 		and cards.size()
 		and cards[0].team != ref_battlemgr.whoami
 		and cards[0].power >= card.power

@@ -7,7 +7,6 @@ const CARDSCENE_PATH = "res://scenes/card.tscn"
 
 var ref_battlemgr
 var ref_cardmgr
-var carddb
 var hand = []
 var screen_ctr_x
 
@@ -15,7 +14,6 @@ func _ready() -> void:
 	screen_ctr_x = get_viewport().size.x/2
 	ref_battlemgr = $"../BattleManager"
 	ref_cardmgr=$"../CardManager"
-	carddb = load("res://scripts/card_db.gd")
 
 func add_card_to_hand(card):
 	hand.insert(0, card)

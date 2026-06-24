@@ -5,7 +5,6 @@ const CARDSCENE_PATH = "res://scenes/card.tscn"
 const STARTCARDS = [3, 4]
 const ROUNDCARDS = 2
 
-var ref_carddb
 var ref_battlemgr
 var deck = []
 var deck_disabled = 1
@@ -15,9 +14,8 @@ func _ready() -> void:
 
 func get_shuffled_deck():
 	var ret = []
-	ref_carddb = preload("res://scripts/card_db.gd")
-	for i in range(ref_carddb.CARDS.size()):
-		for j in range(ref_carddb.CARDS[i][3]):
+	for i in range(GAME_DB.CARDS.size()):
+		for j in range(GAME_DB.CARDS[i][GAME_DB.CARD_IND_COUNT]):
 			ret.append(i)
 	ret.shuffle()
 	ret.erase(ret[0])

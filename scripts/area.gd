@@ -7,7 +7,9 @@ var ref_battlemgr
 var borders = []
 var available = 1
 
-func _ready() -> void:
+# replaced _ready(); MUST be called after being instantiated. May be called anytime
+# after all cardslots have been added to the board.
+func area_init() -> void:
 	ref_battlemgr = $"../../../BattleManager"
 	if (!num_coins):
 		return

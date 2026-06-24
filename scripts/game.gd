@@ -8,14 +8,11 @@ func _ready() -> void:
 	ref_battlemgr = $BattleManager
 	ref_deck = $Deck
 
-func setup_host():
+func setup_host(mapid):
+	init_board(mapid)
 	ref_battlemgr.set_whoami(randi_range(1, 2))
 	var opp_ident = 3 - ref_battlemgr.whoami
 	ref_battlemgr.rpc("set_whoami", opp_ident)
-	ref_battlemgr.mymoney = 0
-	ref_battlemgr.oppmoney = 0
-	$"PlayerInfo/CoinCountLabel".text = "0"
-	$"Opponent/PlayerInfo/CoinCountLabel".text = "0"
 	ref_deck.shuffle_deck()
 	ref_deck.set_client_deck()
 	# draw_initial_hand also removes the opponent's cards from the deck on server side
@@ -33,15 +30,14 @@ func setup_host():
 	$LoadingScreen.rpc("loadingscreen_hide")
 
 @rpc("any_peer")
-func setup_client():
-	ref_battlemgr.mymoney = 0
-	ref_battlemgr.oppmoney = 0
-	$"PlayerInfo/CoinCountLabel".text = "0"
-	$"Opponent/PlayerInfo/CoinCountLabel".text = "0"
+func setup_client(mapid):
+	init_board(mapid)
 	var myname = $"/root/Main".myname
 	ref_battlemgr.set_myname(myname)
 	ref_battlemgr.rpc("set_oppname", myname)
 
+func init_board(mapid):
+	$Board.init_board(mapid)
 
 func restore_client_gamestate():
 	$Deck.rpc("set_client_deck", $"Opponent/Deck".deck)

@@ -10,8 +10,8 @@ var game_end = 0
 var myname
 var oppname
 
-var mymoney
-var oppmoney
+var mymoney = 0
+var oppmoney = 0
 
 func _ready() -> void:
 	ref_deck = $"../Deck"
@@ -31,7 +31,7 @@ func end_turn_internal():
 
 func capture_money(player, amt):
 	update_money(player, amt)
-	if (mymoney >= 7):
+	if (mymoney >= $"../Board".win_money):
 		rpc("lose")
 		win()
 
@@ -40,10 +40,10 @@ func capture_money(player, amt):
 func update_money(player, amt):
 	if (player == whoami):
 		mymoney += amt
-		$"../PlayerInfo/CoinCountLabel".text = str(mymoney)
+		$"../PlayerInfo/CoinCountLabel".text = str(mymoney) + " / " + str($"../Board".win_money)
 	else:
 		oppmoney += amt
-		$"../Opponent/PlayerInfo/CoinCountLabel".text = str(oppmoney)
+		$"../Opponent/PlayerInfo/CoinCountLabel".text = str(oppmoney) + " / " + str($"../Board".win_money)
 
 @rpc("any_peer")
 func start_turn():

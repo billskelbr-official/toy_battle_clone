@@ -4,12 +4,14 @@ extends Node2D
 
 var ref_tube
 var myname
+var mapid = -1
 var hosting = 0
 var mainmenu_on_disconnect = 1
 
 func _ready() -> void:
 	get_tree().set_auto_accept_quit(false)
 	ref_tube = $TubeClient
+	$MainMenu/HostMenu/HostMenuButtons/MapSelect.get_popup().connect("id_pressed", _on_host_map_changed)
 
 func _notification(what):
 	if what == NOTIFICATION_WM_CLOSE_REQUEST:
@@ -22,9 +24,17 @@ func _on_host_menu_button_pressed() -> void:
 	$"MainMenu/DimPolygon".visible = 1
 	$"MainMenu/HostMenu".visible = 1
 
+func _on_host_map_changed(mapid_):
+	$"MainMenu/HostMenu/HostMenuButtons/MapSelect".text = "Map: " + GAME_DB.BOARDS[mapid_][GAME_DB.BOARD_IND_NAME]
+	mapid = mapid_
+
 func _on_host_button_pressed():
 	hosting = !hosting
 	if (hosting):
+		if (mapid == -1):
+			hosting = 0
+			$MsgBox.show_msg("No map selected")
+			return
 		$"MainMenu/HostMenu/HostMenuButtons/MainMenuButton".disabled = 1
 		$"MainMenu/HostMenu/HostMenuButtons/HostButton".text = "Cancel"
 		set_myname($"MainMenu/HostMenu/HostMenuButtons/NameInput".text)
@@ -34,7 +44,6 @@ func _on_host_button_pressed():
 		multiplayer.peer_disconnected.connect(_on_peer_disconnected)
 	else:
 		# already hosting a game, so cancel
-		reset_host_menu()
 		mainmenu_on_disconnect = 0
 		multiplayer.peer_connected.disconnect(_on_peer_connected)
 		multiplayer.peer_disconnected.disconnect(_on_peer_disconnected)
@@ -45,6 +54,12 @@ func _on_join_menu_button_pressed():
 	$"MainMenu/RootMenu".visible = 0
 	$"MainMenu/DimPolygon".visible = 1
 	$"MainMenu/JoinMenu".visible = 1
+
+func _on_join_id_input_text_changed(new_text: String) -> void:
+	var inputnode = $"MainMenu/JoinMenu/JoinMenuButtons/JoinIDInput" 
+	var caretpos = inputnode.caret_column
+	inputnode.text = new_text.to_upper()
+	inputnode.caret_column = caretpos
 
 func _on_join_button_pressed() -> void:
 	var session_id = $"MainMenu/JoinMenu/JoinMenuButtons/JoinIDInput".text.to_upper()
@@ -62,23 +77,21 @@ func _on_main_menu_button_pressed():
 	$"MainMenu/RootMenu".visible = 1
 
 func _on_peer_connected(_peerid):
-	# reset the host menu
-	reset_host_menu()
-	
 	ref_tube.refuse_new_connections = 1
 	hide_mainmenu()
 	var g = game_scene.instantiate()
 	add_child(g)
-	g.setup_host()
-	if (g.ongoing_game):
-		$Game.restore_client_gamestate()
-	else:
-		$Game.rpc("setup_client")
+	g.setup_host(mapid)
+	$Game.rpc("setup_client", mapid)
+	# reset the host menu last because it will mess up the mapid needed for initialisation
+	reset_host_menu()
 
 func _on_peer_disconnected(_peerid):
 	ref_tube.refuse_new_connections = 0
 	# kill the server when the peer disconnects to avoid corruptions when reconnecting.
 	# allowing disconnected players to reconnect is planned but not fully implemented yet.
+	multiplayer.peer_connected.disconnect(_on_peer_connected)
+	multiplayer.peer_disconnected.disconnect(_on_peer_disconnected)
 	ref_tube.leave_session()
 
 func hide_mainmenu():
@@ -128,3 +141,5 @@ func reset_host_menu():
 		$"MainMenu/HostMenu/HostMenuButtons/HostButton".text = "Host Game"
 		$"MainMenu/HostMenu/HostIDLabel".text = "Session ID: [------]"
 		$"MainMenu/HostMenu/HostMenuButtons/MainMenuButton".disabled = 0
+		$"MainMenu/HostMenu/HostMenuButtons/MapSelect".text = "Select map..."
+		mapid = -1

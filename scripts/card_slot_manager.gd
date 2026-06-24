@@ -1,7 +1,6 @@
 extends Node2D
 
 var ref_battlemgr
-var ref_carddb
 var ref_cardmgr
 var ref_deck
 var ref_hand
@@ -12,36 +11,37 @@ var golem_active = 0
 var golem_slot
 
 func _ready() -> void:
-	ref_carddb = load("res://scripts/card_db.gd")
 	ref_cardmgr = $"../../CardManager"
 	ref_battlemgr = $"../../BattleManager"
 	ref_deck = $"../../Deck"
 	ref_hand = $"../../PlayerHand"
 
+var foo
+
 func handle_card_ability(slot, card):
 	match (card.id):
-		ref_carddb.CARDID_DUCK, ref_carddb.CARDID_DINOSAUR, ref_carddb.CARDID_MONKEY:
+		GAME_DB.CARDID_DUCK, GAME_DB.CARDID_DINOSAUR, GAME_DB.CARDID_MONKEY:
 			pass
-		ref_carddb.CARDID_SOLDIER:
+		GAME_DB.CARDID_SOLDIER:
 			# if size is 1, soldier is the only card in the hand
 			if (ref_hand.hand.size() > 0):
 				ref_deck.deck_disabled = 1
 				# captured area check for soldier to update immediately
 				$"../AreaManager".check_capture()
 				return
-		ref_carddb.CARDID_SKELETON:
+		GAME_DB.CARDID_SKELETON:
 			ref_deck.draw_card_mpwrapper()
 			ref_deck.draw_card_mpwrapper()
-		ref_carddb.CARDID_UNICORN:
+		GAME_DB.CARDID_UNICORN:
 			ref_deck.draw_card_mpwrapper()
-		ref_carddb.CARDID_ROBOT:
+		GAME_DB.CARDID_ROBOT:
 			var opphandsz = $"../../Opponent/Hand".hand.size()
 			if (opphandsz):
 				var ind = randi_range(0, opphandsz-1)
 				ref_hand.rpc("discard_at_ind", ind)
 #				$"../../Opponent/Hand".remove_card_from_hand($"../../Opponent/Hand".hand[ind])
 #				$"../../PlayerHand".rpc("remove_card_at_ind", ind)
-		ref_carddb.CARDID_GOLEM:
+		GAME_DB.CARDID_GOLEM:
 			for nb in slot.neighbours:
 				if (nb.cards.size() && nb.cards[0].team != ref_battlemgr.whoami):
 					golem_active = 1

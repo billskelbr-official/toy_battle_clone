@@ -3,7 +3,6 @@ extends Node2D
 const HAND_COUNT = 8
 const CARDSCENE_PATH = "res://scenes/opponent_card.tscn"
 
-var carddb
 var ref_battlemgr
 var deck = []
 # this is for the soldier ability. it disables the deck so only card can be played

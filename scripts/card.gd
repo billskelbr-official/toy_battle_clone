@@ -14,16 +14,15 @@ func init(team_, id_):
 	team = team_
 	id = id_
 	scale = Vector2(0.7, 0.7)
-	var db = load("res://scripts/card_db.gd")
-	var drawn = db.CARDS[id]
-	power = drawn[0]
-	var imgpath = "res://assets/textures/card/units/" + drawn[1].to_lower() + ".png"
+	var drawn = GAME_DB.CARDS[id]
+	power = drawn[GAME_DB.CARD_IND_POWER]
+	var imgpath = "res://assets/textures/card/units/" + drawn[GAME_DB.CARD_IND_NAME].to_lower() + ".png"
 	get_node("CardImageBack").texture = load("res://assets/textures/card/back_"+str(team)+".png")
 	get_node("CardFront/CardImageBase").texture = load("res://assets/textures/card/base_"+str(team)+".png")
 	get_node("CardFront/CardImageUnit").texture = load(imgpath)
-	get_node("CardFront/PowerLabel").text = str(drawn[0])
-	get_node("CardFront/NameLabel").text = str(drawn[1])
-	get_node("CardFront/AbilityLabel").text = str(drawn[2])
+	get_node("CardFront/PowerLabel").text = str(drawn[GAME_DB.CARD_IND_POWER])
+	get_node("CardFront/NameLabel").text = str(drawn[GAME_DB.CARD_IND_NAME])
+	get_node("CardFront/AbilityLabel").text = str(drawn[GAME_DB.CARD_IND_ABILITYDESC])
 	return self
 
 func _ready() -> void:

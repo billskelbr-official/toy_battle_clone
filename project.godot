@@ -15,6 +15,10 @@ run/main_scene="uid://c3rdokaglfmga"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="uid://clvvogs6ns5lv"
 
+[autoload]
+
+GAME_DB="*uid://bh6fewb8gddah"
+
 [display]
 
 window/size/viewport_width=1920
@@ -25,6 +29,7 @@ window/stretch/mode="viewport"
 [editor]
 
 movie_writer/movie_file="/tmp/out.png"
+movie_writer/fps=1
 
 [editor_plugins]
 
