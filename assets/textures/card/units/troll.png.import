@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d0r31dvyf37fn"
-path="res://.godot/imported/1_t.png-5f90d600738a7bc5badade47e08b7eb2.ctex"
+uid="uid://dsaj22dqwp1nw"
+path="res://.godot/imported/troll.png-2f36b3377dcb14d1896f2e1ec7a1ff4a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/textures/boards/1_t.png"
-dest_files=["res://.godot/imported/1_t.png-5f90d600738a7bc5badade47e08b7eb2.ctex"]
+source_file="res://assets/textures/card/units/troll.png"
+dest_files=["res://.godot/imported/troll.png-2f36b3377dcb14d1896f2e1ec7a1ff4a.ctex"]
 
 [params]
 

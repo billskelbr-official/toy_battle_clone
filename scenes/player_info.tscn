@@ -27,14 +27,14 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="CoinIconImg" type="Sprite2D" parent="." unique_id=851884000]
-position = Vector2(-7, 18)
+position = Vector2(-7, 22)
 texture = ExtResource("1_qu03o")
 
 [node name="CoinCountLabel" type="RichTextLabel" parent="." unique_id=2018239729]
 offset_left = 5.0
-offset_top = -7.0
+offset_top = -3.0
 offset_right = 65.0
-offset_bottom = 33.0
+offset_bottom = 37.0
 theme_override_font_sizes/normal_font_size = 20
 theme_override_font_sizes/bold_font_size = 20
 theme_override_font_sizes/bold_italics_font_size = 20

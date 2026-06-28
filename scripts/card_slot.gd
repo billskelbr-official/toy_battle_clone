@@ -2,7 +2,7 @@ extends Node2D
 
 const CARDSLOT_PREFIX = "../CardSlot"
 
-@export var hq: int
+@export var hq: int = 0
 # hq = 0: base
 # hq = 1: blue hq
 # hq = 2: red hq
@@ -17,6 +17,11 @@ var cards = []
 var team
 var id
 var neighbours
+
+# this is for cardslots used as discard piles because cardslot_init() is not called
+func _ready() -> void:
+	if (hq < 0):
+		$CardSlotImage.texture = load("res://assets/textures/cardslots/discard.png")
 
 # MUST be called for all non-discard cardslots (replaced _ready() function to allow setting exported
 # vars in code). call this for ALL slots after ALL slots have been added to the board.

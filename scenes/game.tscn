@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://q842xggl1vdq" path="res://scripts/game.gd" id="1_trtic"]
 [ext_resource type="Script" uid="uid://brm8slsl5j20f" path="res://scripts/card_manager.gd" id="1_u5sy4"]
-[ext_resource type="Texture2D" uid="uid://cscol5g2f7sti" path="res://assets/textures/boards/0.png" id="3_0tnpc"]
 [ext_resource type="Script" uid="uid://cpcwslab6u3jb" path="res://scripts/board.gd" id="3_5newe"]
 [ext_resource type="Script" uid="uid://mbjwu6x0c76m" path="res://scripts/card_slot_manager.gd" id="4_rysoc"]
 [ext_resource type="PackedScene" uid="uid://bhor3savc4y8q" path="res://scenes/card_slot.tscn" id="4_vtaks"]
@@ -38,7 +37,6 @@ script = ExtResource("3_5newe")
 
 [node name="BoardBgImg" type="Sprite2D" parent="Board" unique_id=1900993382]
 z_index = -20
-texture = ExtResource("3_0tnpc")
 offset = Vector2(960, 540)
 
 [node name="CardSlotManager" type="Node2D" parent="Board" unique_id=1457567546]
