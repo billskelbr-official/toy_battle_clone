@@ -10,6 +10,10 @@
 [ext_resource type="PackedScene" uid="uid://bylj1vufgssto" path="res://scenes/msg_box.tscn" id="5_tbgi4"]
 [ext_resource type="Texture2D" uid="uid://cfl5r0q4r1jvr" path="res://assets/textures/boards/2_t.png" id="6_85g3d"]
 [ext_resource type="Texture2D" uid="uid://b8mfxnsl3oyqv" path="res://assets/textures/boards/3_t.png" id="7_choun"]
+[ext_resource type="Texture2D" uid="uid://msc1f7xkgpnk" path="res://assets/textures/boards/4_t.png" id="8_ya4ey"]
+[ext_resource type="Texture2D" uid="uid://buwsieg8htwjt" path="res://assets/textures/boards/5_t.png" id="9_eb6dy"]
+[ext_resource type="Texture2D" uid="uid://c8r4i480txtna" path="res://assets/textures/boards/6_t.png" id="10_trceg"]
+[ext_resource type="Texture2D" uid="uid://dbf3wbbxobnwa" path="res://assets/textures/boards/7_t.png" id="11_a8y0u"]
 
 [node name="Main" type="Node2D" unique_id=1826685406]
 script = ExtResource("1_o5qli")
@@ -28,7 +32,7 @@ offset_left = 1753.0
 offset_top = 1019.0
 offset_right = 1887.0
 offset_bottom = 1064.0
-text = "1.1-beta-1"
+text = "1.1-beta-2"
 horizontal_alignment = 2
 vertical_alignment = 2
 
@@ -108,7 +112,7 @@ theme_override_font_sizes/font_size = 32
 toggle_mode = false
 text = "Select map..."
 expand_icon = true
-item_count = 4
+item_count = 8
 popup/item_0/text = "Duck Ponds"
 popup/item_0/icon = ExtResource("4_tipki")
 popup/item_0/id = 0
@@ -121,6 +125,18 @@ popup/item_2/id = 2
 popup/item_3/text = "Troll Bridge"
 popup/item_3/icon = ExtResource("7_choun")
 popup/item_3/id = 3
+popup/item_4/text = "Tropical Islands"
+popup/item_4/icon = ExtResource("8_ya4ey")
+popup/item_4/id = 4
+popup/item_5/text = "Robot Factory"
+popup/item_5/icon = ExtResource("9_eb6dy")
+popup/item_5/id = 5
+popup/item_6/text = "Fluffy Rainbow"
+popup/item_6/icon = ExtResource("10_trceg")
+popup/item_6/id = 6
+popup/item_7/text = "Prehistoric Volcano"
+popup/item_7/icon = ExtResource("11_a8y0u")
+popup/item_7/id = 7
 
 [node name="AllowSpectatorsCheckBox" type="CheckBox" parent="MainMenu/HostMenu/HostMenuButtons" unique_id=1510023582]
 visible = false

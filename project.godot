@@ -12,7 +12,7 @@ config_version=5
 
 config/name="Toy Battle Clone"
 run/main_scene="uid://c3rdokaglfmga"
-config/features=PackedStringArray("4.6", "GL Compatibility")
+config/features=PackedStringArray("4.7", "GL Compatibility")
 config/icon="uid://clvvogs6ns5lv"
 
 [autoload]
@@ -23,7 +23,6 @@ GAME_DB="*uid://bh6fewb8gddah"
 
 window/size/viewport_width=1920
 window/size/viewport_height=1080
-window/size/resizable=false
 window/stretch/mode="viewport"
 
 [editor]

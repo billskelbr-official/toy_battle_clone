@@ -8,7 +8,7 @@ var hand = []
 var screen_ctr_x
 
 func _ready() -> void:
-	screen_ctr_x = get_viewport().size.x/2
+	screen_ctr_x = 960
 
 func add_card_to_hand(card):
 	hand.insert(0, card)

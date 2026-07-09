@@ -102,8 +102,7 @@ func game_end_cleanup():
 	game_end = 1
 	end_turn_internal()
 	$"../Buttons/SurrenderButton".disabled = 1
-	if (multiplayer.get_unique_id() == 1):
-		$"../Buttons/LeaveButton".disabled = 0
+	$"../Buttons/LeaveButton".disabled = 0
 
 func set_myname(name_):
 	myname = name_

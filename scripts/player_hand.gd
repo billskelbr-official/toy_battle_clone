@@ -11,7 +11,8 @@ var hand = []
 var screen_ctr_x
 
 func _ready() -> void:
-	screen_ctr_x = get_viewport().size.x/2
+	# screen_ctr_x = get_viewport().size.x/2
+	screen_ctr_x = 960 #1920/2
 	ref_battlemgr = $"../BattleManager"
 	ref_cardmgr=$"../CardManager"
 
